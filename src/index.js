@@ -13,7 +13,7 @@ const apolloService = new ApolloServerService({
 })
 
 const mongdbService = new MongodbConnectionService({
-  uris: 'mongodb://localhost:27017/test_db'
+  uris: require('./config').DB_URIS
 })
 
 mongdbService.start()
