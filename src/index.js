@@ -11,9 +11,9 @@ const apolloService = new ApolloServerService({
     // userAPI: new UserAPI({ store }),
   })
 })
-
+const {DB_URI} = require('./config')
 const mongdbService = new MongodbConnectionService({
-  uris: require('./config').DB_URIS
+  uri: DB_URI
 })
 
 mongdbService.start()

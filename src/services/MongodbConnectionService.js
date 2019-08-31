@@ -6,8 +6,8 @@ class MongodbConnectionService {
    *
    * @param {{uris: String, options: {[String]: Any}}} param0
    */
-  constructor({ uris, options = {} }) {
-    this.uris = uris;
+  constructor({ uri, options = {} }) {
+    this.uri = uri;
     this.options = options
 
     mongoose.connection.once('connected', () => console.log('Connection with mongodb establish.'))
@@ -15,9 +15,8 @@ class MongodbConnectionService {
   }
 
   async start() {
-    return await mongoose.connect(this.uris, { useNewUrlParser: true, ...this.options })
+    return await mongoose.connect(this.uri, { useNewUrlParser: true, ...this.options })
   }
-
 }
 
 module.exports = MongodbConnectionService

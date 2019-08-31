@@ -1,4 +1,5 @@
 const { ApolloServer } = require('apollo-server');
+const isProd = (process.env.NODE_ENV == 'production')
 
 class ApolloServerService {
 
@@ -19,7 +20,7 @@ class ApolloServerService {
         const token = req.headers.authorization || "";
         return { token };
       },
-      playground: {
+      playground: isProd ? false : {
         settings: {
           "editor.theme": "dark"
         }
